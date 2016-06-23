@@ -21,25 +21,21 @@ import (
 )
 
 var (
-	s3Bucket    = flag.String("s3Bucket", "", "s3 bucket")
-	s3Prefix    = flag.String("s3Prefix", "", "s3 prefix")
-	localDir    = flag.String("localDir", "", "local directory")
-	gsProjectId = flag.String("gsProjectId", "", "gs project id")
-	gsBucket    = flag.String("gsBucket", "", "gs bucket")
+	awsProfile   = flag.String("awsProfile", "", "aws profile")
+	s3Bucket     = flag.String("s3Bucket", "", "s3 bucket")
+	s3Prefix     = flag.String("s3Prefix", "", "s3 prefix")
+	localDir     = flag.String("localDir", "", "local directory")
+	gcpProjectId = flag.String("gcpProjectId", "", "gcp project id")
+	gsBucket     = flag.String("gsBucket", "", "gs bucket")
 )
 
 func main() {
-	flag.Usage = func() {
-		fmt.Fprintf(os.Stderr, "Usage: S3toGS --s3Bucket=... --s3Prefix=... --localDir=... --gsProjectId=... --gsBucket=...\n")
-		flag.PrintDefaults()
-	}
-
 	flag.Parse()
 
 	// Set up AWS clients
 	sess := session.New(&aws.Config{
 		Region:      aws.String("us-east-1"),
-		Credentials: credentials.NewSharedCredentials("", "krux"),
+		Credentials: credentials.NewSharedCredentials("", *awsProfile),
 	})
 	s3Client := s3.New(sess)
 	s3ListRes, err := s3Client.ListObjects(&s3.ListObjectsInput{

@@ -29,6 +29,8 @@ var (
 	gsBucket     = flag.String("gsBucket", "", "gs bucket")
 )
 
+type Exit struct{ Code int }
+
 // exit code handler
 // http://stackoverflow.com/a/27630092/1881379
 func handleExit() {

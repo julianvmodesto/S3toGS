@@ -123,7 +123,7 @@ func main() {
 		s3MD5 := strings.Replace(*key.ETag, "\"", "", -1)
 		s3Size := *key.Size
 
-		localFilepath := filepath.Join(*localDir, *key.Key)
+		localFilepath := filepath.Join(*localDir, filepath.Base(*key.Key))
 
 		if gsErr != nil || // doesn't exist in GS
 			!strings.EqualFold(s3MD5, hex.EncodeToString(gsAttrs.MD5)) ||

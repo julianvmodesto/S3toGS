@@ -168,6 +168,12 @@ func main() {
 				// Delete local file
 				fmt.Println("Removing", file.Name())
 				os.Remove(file.Name())
+
+				gsAttrs, gsErr := gsClient.Bucket(*gsBucket).Object(*key.Key).Attrs(gcpContext)
+				if gsErr != nil || s3Size != gsAttrs.Size {
+					log.Fatal("Upload failed")
+					panic(Exit{1})
+				}
 			}
 		} else {
 			fmt.Println("Already in GS, skipping", *key.Key)

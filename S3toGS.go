@@ -134,6 +134,7 @@ func main() {
 			} else if gsErr == nil && s3Size == gsAttrs.Size {
 				fmt.Println("Size matches, skipping", *key.Key)
 			} else if *dryRun {
+				amtTransferred += uint64(s3Size)
 				fmt.Println("Would download/upload", *key.Key)
 			} else {
 				amtTransferred += uint64(s3Size)

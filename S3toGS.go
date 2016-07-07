@@ -26,15 +26,15 @@ import (
 )
 
 var (
-	awsProfile   = flag.String("awsProfile", "", "aws profile")
-	s3Bucket     = flag.String("s3Bucket", "", "s3 bucket")
-	s3Prefix     = flag.String("s3Prefix", "", "s3 prefix")
-	localDir     = flag.String("localDir", "", "local directory")
-	gcpProjectId = flag.String("gcpProjectId", "", "gcp project id")
-	gsBucket     = flag.String("gsBucket", "", "gs bucket")
-	dryRun       = flag.Bool("dryRun", false, "dry run")
+	awsProfile = flag.String("awsProfile", "", "aws profile")
+	s3Bucket   = flag.String("s3Bucket", "", "s3 bucket")
+	s3Prefix   = flag.String("s3Prefix", "", "s3 prefix")
+	localDir   = flag.String("localDir", "", "local directory")
+	gsBucket   = flag.String("gsBucket", "", "gs bucket")
+	dryRun     = flag.Bool("dryRun", false, "dry run")
 )
 
+// Exit struct helper
 type Exit struct{ Code int }
 
 // exit code handler

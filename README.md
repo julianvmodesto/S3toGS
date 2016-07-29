@@ -6,3 +6,6 @@ Replicates `gsutil rsync -d -r gs://my-gs-bucket s3://my-s3-bucket`,
 but supports S3 user-specific directories.
 
 Install AWS CLI and GCP SDK and set up your respective credentials.
+
+# Alternative
+I highly recommend using https://github.com/ncw/rclone instead. Fast sync utility for multiple clouds written in Go.
